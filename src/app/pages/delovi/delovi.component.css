@@ -1,0 +1,31 @@
+.footer{
+  background:#242927;
+  margin-bottom:0;
+  padding-bottom:10px;
+  width:100%;
+  position: absolute;
+}
+
+h2, h3{
+  color: crimson;
+}
+
+.row{
+  text-align: center;
+}
+
+.delovi{
+  background-color: #242927;
+  margin-bottom: 10px;
+  padding-top: 15px;
+  padding-left: 15px;
+
+}
+
+.navbar-form navbar-left{
+  text-align: center;
+}
+
+.delovi:hover{
+  background-color: darkgrey;
+}

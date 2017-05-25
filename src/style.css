@@ -1,0 +1,33 @@
+body{
+    background-color: #ede9e8;
+    width:100%;
+    margin:auto
+}
+
+p{
+    font-size:18px;
+    font-family:sans-serif;
+    color:#dc143c
+}
+
+li{
+    list-style:none;
+    float:left;
+    font-size:18px;
+    color: #dc143c;
+    font-family:sans-serif;
+    margin-left:25px;
+    padding-right:25px
+}
+
+li.f1{
+    color:#dc143c;
+    float:right;
+    margin-top:20px;
+    margin-right:25px;
+    font-size:20px
+}
+
+#map {
+    height: 500px;
+}

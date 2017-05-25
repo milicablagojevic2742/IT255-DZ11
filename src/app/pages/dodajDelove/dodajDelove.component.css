@@ -1,0 +1,22 @@
+h2 {
+    color: crimson;
+    text-align: center;
+}
+
+.form-control{
+    width: 35%;
+    text-align: center;
+    margin-left: 32%;
+}
+
+.footer{
+    background:#242927;
+    margin-bottom:0;
+    padding-bottom:10px;
+    width:100%;
+    position: absolute;
+}
+
+.forma{
+    text-align: center;
+}

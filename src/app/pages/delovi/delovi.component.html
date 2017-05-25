@@ -1,0 +1,31 @@
+<div id="content" class="container">
+  <div class="row">
+    <h2>Potrazite deo koji Vam treba:</h2>
+  <form class="navbar-form" role="search">
+    <div class="form-group">
+      <p>Pretraziti po imenu: </p>
+      <input type="text" class="form-control" placeholder="Search" name="name" [(ngModel)]="name">
+    </div>
+  </form>
+    <form class="navbar-form" role="search">
+      <div class="form-group">
+        <p>Pretraziti po proizvodjacu: </p>
+        <input type="text" class="form-control" placeholder="Search" name="manufacturer" [(ngModel)]="manufacturer">
+      </div>
+    </form>
+    <div class="col-md-12">
+    <div *ngFor="let deo of data | SearchImenaDelovi:name | SearchProizvodjacDelovi:manufacturer" class="delovi">
+      <p><img src="app/pic/{{deo.name}}.png" width="200px" height="80px"><br>{{deo.name}}</p>
+      <br><p>{{deo.manufacturer}}</p>
+      <h3> Cena: {{deo.price}}</h3>
+      <br>
+    </div>
+  </div>
+  </div>
+</div>
+<div class="footer">
+  <ul>
+    <li class="f1">© Copyright 2017. All rights reserved.</li>
+  </ul>
+</div>
+

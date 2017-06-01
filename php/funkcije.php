@@ -76,7 +76,7 @@
 		if(strlen($email) < 3 || $email == ""){
 			$errors .= "E-mail must have at least 3 characters and cannot be empty\r\n";
 		}
-		if($email == ""){
+		if($phone == ""){
 			$errors .= "Phone cannot be empty\r\n";
 		}
 		if($errors == ""){
@@ -120,4 +120,25 @@
 			return false;
 		}
 	}
+	
+	function dodajDelove($name, $price, $manufacturer, $type){
+    global $con;
+    $rarray = array();
+    if(checkIfLoggedIn()){
+		$stmt = $con->prepare("INSERT INTO delovi (name, price, manufacturer, type) VALUES (:name, :price, :manufacturer, :type)");
+		$stmt->bindParam(":name", $name);
+		$stmt->bindParam(":price", $price);
+		$stmt->bindParam(":manufacturer", $manufacturer);
+		$stmt->bindParam(":type", $type);
+        if($stmt->execute()){
+            $rarray['success'] = "ok";
+        }else{
+            $rarray['error'] = "Database connection error";
+        }
+    } else{
+        $rarray['error'] = "Please log in";
+        header('HTTP/1.1 401 Unauthorized');
+    }
+    return json_encode($rarray);
+}
 ?>

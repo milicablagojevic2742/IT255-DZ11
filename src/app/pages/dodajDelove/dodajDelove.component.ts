@@ -4,7 +4,7 @@
 
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Http, Headers } from '@angular/http';
+import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/Rx';
 import {Router} from '@angular/router';
 
@@ -20,6 +20,7 @@ export class DodajDeloveComponent  {
     router: Router;
     data: string;
     headers: Headers;
+    postResponse: Response;
 
     dodajDeoForm = new FormGroup({
         name: new FormControl(),
@@ -31,22 +32,29 @@ export class DodajDeloveComponent  {
     constructor(http: Http, router: Router) {
         this.http = http;
         this.router = router;
+        if (localStorage.getItem('token') == null) {
+            this.router.navigate(['']);
+        }
     }
 
     dodaj(): void {
         this.data = 'name=' + this.dodajDeoForm.value.name + '&price=' + this.dodajDeoForm.value.price
             + '&manufacturer=' + this.dodajDeoForm.value.manufacturer + '&type=' + this.dodajDeoForm.value.type;
         this.headers = new Headers();
+        this.headers.append('token', localStorage.getItem('token'));
         this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
-        this.http.post('http://localhost/IT255-DZ10/dodajDeo.php', this.data, { headers: this.headers })
-            .subscribe(
-                data => {
-                    if (data['_body'] === 'ok') {
+        this.http.post('http://localhost/IT255-DZ10/php/dodajDeo.php', this.data, { headers: this.headers })
+            .map(res => res)
+            .subscribe( data => this.postResponse = data,
+                err => alert(JSON.stringify(err)), () => {
+                    if (this.postResponse['_body'].indexOf('error') === -1) {
                         this.router.navigate(['']);
+                    }else {
+                        alert('Neuspeh');
                     }
                 }
             );
-        alert('Uspesno ste uneli deo!');
+        alert('Uspesan unos T!');
     }
 
 }

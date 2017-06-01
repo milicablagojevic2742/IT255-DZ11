@@ -1,6 +1,8 @@
 <?php 
 header("Access-Control-Allow-Origin: *");
-require_once("konekcija.php");
+header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization, Token, token, TOKEN');
+include("funkcije.php");
+
 
 if ( isset($_POST['name']) && isset($_POST['price']) && isset($_POST['manufacturer']) && isset($_POST['type'])) {
     $name = $_POST['name'];
@@ -8,14 +10,7 @@ if ( isset($_POST['name']) && isset($_POST['price']) && isset($_POST['manufactur
 	$manufacturer = $_POST['manufacturer'];
     $type = $_POST['type'];
 	
-    $stmt = $con->prepare("INSERT INTO Delovi (name, price, manufacturer, type) VALUES (:name, :price, :manufacturer, :type)");
-	$stmt->bindParam(":name", $name);
-    $stmt->bindParam(":price", $price);
-    $stmt->bindParam(":manufacturer", $manufacturer);
-    $stmt->bindParam(":type", $type);
-    
-    $stmt->execute();
-    echo "Uspesan upis";
+    echo dodajDelove($name, $price, $manufacturer, $type);
 		
 }
 

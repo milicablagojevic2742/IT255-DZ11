@@ -27,20 +27,28 @@ var DodajDeloveComponent = (function () {
         });
         this.http = http;
         this.router = router;
+        if (localStorage.getItem('token') == null) {
+            this.router.navigate(['']);
+        }
     }
     DodajDeloveComponent.prototype.dodaj = function () {
         var _this = this;
         this.data = 'name=' + this.dodajDeoForm.value.name + '&price=' + this.dodajDeoForm.value.price
             + '&manufacturer=' + this.dodajDeoForm.value.manufacturer + '&type=' + this.dodajDeoForm.value.type;
         this.headers = new http_1.Headers();
+        this.headers.append('token', localStorage.getItem('token'));
         this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
-        this.http.post('http://localhost/IT255-DZ10/dodajDeo.php', this.data, { headers: this.headers })
-            .subscribe(function (data) {
-            if (data['_body'] === 'ok') {
+        this.http.post('http://localhost/IT255-DZ10/php/dodajDeo.php', this.data, { headers: this.headers })
+            .map(function (res) { return res; })
+            .subscribe(function (data) { return _this.postResponse = data; }, function (err) { return alert(JSON.stringify(err)); }, function () {
+            if (_this.postResponse['_body'].indexOf('error') === -1) {
                 _this.router.navigate(['']);
             }
+            else {
+                alert('Neuspeh');
+            }
         });
-        alert('Uspesno ste uneli deo!');
+        alert('Uspesan unos T!');
     };
     return DodajDeloveComponent;
 }());

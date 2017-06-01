@@ -61,11 +61,11 @@
 		if(checkIfUserExists($username)){
 			$errors .= "Username already exists\r\n";
 		}
-		if(strlen($username) < 3 || $username == ""){
-			$errors .= "Username must have at least 3 characters and cannot be empty\r\n";
+		if(strlen($username) < 5 || $username == ""){
+			$errors .= "Username must have at least 5 characters and cannot be empty\r\n";
 		}
-		if(strlen($password) < 3 || $password == ""){
-			$errors .= "Password must have at least 3 characters and cannot be empty\r\n";
+		if(strlen($password) < 5 || $password == ""){
+			$errors .= "Password must have at least 5 characters and cannot be empty\r\n";
 		}
 		if(strlen($name) < 3 || $name == ""){
 			$errors .= "Name must have at least 3 characters and cannot be empty\r\n";

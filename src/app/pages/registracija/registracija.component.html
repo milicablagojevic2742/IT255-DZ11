@@ -1,0 +1,26 @@
+<div id="content" class="container" class="login" style="width: 430px">
+    <div class="row">
+        <form role="form" [formGroup]="registerForma" align="center" style="width: 430px" class="formal">
+            <h2>Registracija</h2>
+            <input type="text" formControlName='username' placeholder="Username"/>
+            <br>
+            <br>
+            <input type="password" formControlName='password' placeholder="Password"/>
+            <br>
+            <br>
+            <input type="text" formControlName='email' placeholder="E-mail"/>
+            <br>
+            <br>
+            <input type="text" formControlName='name' placeholder="Ime"/>
+            <br>
+            <br>
+            <input type="text" formControlName='lastName' placeholder="Prezime"/>
+            <br>
+            <br>
+            <input type="text" formControlName='phone' placeholder="Telefon"/>
+            <br>
+            <br>
+            <button (click)="registracija()">Registruj se</button>
+        </form>
+    </div>
+</div>

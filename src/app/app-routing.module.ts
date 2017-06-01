@@ -9,6 +9,8 @@ import { OpisComponent } from './pages/opis/opis.component';
 import { DeloviComponent } from './pages/delovi/delovi.component';
 import { DodajDeloveComponent } from './pages/dodajDelove/dodajDelove.component';
 import {KontaktComponent} from './pages/kontakt/kontakt.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegistracijaComponent } from './pages/registracija/registracija.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/pocetna', pathMatch: 'full'},
@@ -16,7 +18,9 @@ const routes: Routes = [
   { path: 'opis', component: OpisComponent},
   { path: 'delovi', component: DeloviComponent},
   { path: 'dodajDelove', component: DodajDeloveComponent},
-  { path: 'kontakt', component: KontaktComponent}
+  { path: 'kontakt', component: KontaktComponent},
+  { path: 'login', component: LoginComponent},
+  { path: 'registracija', component: RegistracijaComponent}
 ]
 
 @NgModule ({

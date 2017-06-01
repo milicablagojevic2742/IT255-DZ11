@@ -23,7 +23,7 @@ var DeloviComponent = (function () {
     };
     DeloviComponent.prototype.getData = function () {
         var _this = this;
-        this.http.get('http://localhost/IT255-DZ10/deloviBaza.php')
+        this.http.get('http://localhost/IT255-DZ10/php/deloviBaza.php')
             .subscribe(function (res) { return _this.data = res.json(); });
     };
     return DeloviComponent;

@@ -14,11 +14,13 @@ import { KontaktComponent } from './pages/kontakt/kontakt.component';
 import { DeloviImenaSearch } from './pages/delovi/delovi-imenasearch';
 import { DeloviProizvidjacSearch } from './pages/delovi/delovi-proizvodjacsearch';
 import { DodajDeloveComponent } from './pages/dodajDelove/dodajDelove.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegistracijaComponent } from './pages/registracija/registracija.component';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, AppRoutingModule, HttpModule, ReactiveFormsModule ],
   declarations: [ AppComponent, HeaderComponent, PocetnaComponent, OpisComponent, DeloviComponent, KontaktComponent, DeloviImenaSearch,
-  DeloviProizvidjacSearch, DodajDeloveComponent],
+  DeloviProizvidjacSearch, DodajDeloveComponent, LoginComponent, RegistracijaComponent],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

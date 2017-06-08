@@ -48,13 +48,13 @@ export class DodajDeloveComponent  {
             .subscribe( data => this.postResponse = data,
                 err => alert(JSON.stringify(err)), () => {
                     if (this.postResponse['_body'].indexOf('error') === -1) {
-                        this.router.navigate(['']);
+                        this.router.navigate(['/delovi']);
                     }else {
                         alert('Neuspeh');
                     }
                 }
             );
-        alert('Uspesan unos T!');
+        alert('Uspesan unos dela!');
     }
 
 }

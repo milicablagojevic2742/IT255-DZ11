@@ -1,6 +1,10 @@
 <?php 
 	include("konekcija.php");
 	
+	if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+     die();
+	}
+	
 	function checkIfLoggedIn(){
 		global $con;
 		if(isset($_SERVER['HTTP_TOKEN'])){
@@ -140,5 +144,64 @@
         header('HTTP/1.1 401 Unauthorized');
     }
     return json_encode($rarray);
+    }
+
+    function getDeo($id){
+        global $con;
+        $rarray = array();
+        if(checkIfLoggedIn()){
+			$result = $con->prepare("SELECT * FROM delovi WHERE id=:id");
+			$result->bindParam(":id", $id);
+			$result->execute();
+			while($row = $result->fetch()) {
+				$one_deo = array();
+				$one_deo['id'] = $row['id'];
+				$one_deo['name'] = $row['name'];
+				$one_deo['price'] = $row['price'];
+				$one_deo['manufacturer'] = $row['manufacturer'];
+				
+			}
+			$rarray['red'] = $one_deo;
+			return json_encode($rarray);
+		}
+	}
+
+    function deleteDeo($id){
+        global $con;
+        $rarray = array();
+        if(checkIfLoggedIn()){
+            $result = $con->prepare("DELETE FROM delovi WHERE id=:id");
+            $result->bindParam(":id",$id);
+            $result->execute();
+            $rarray['success'] = "Deleted successfully";
+        }
+        else{
+            $rarray['error'] = "Please log in";
+            header('HTTP/1.1 401 Unauthorized');
+        }
+        return json_encode($rarray);
+    }
+	
+	function promeniDeo($id, $name, $price, $manufacturer, $type){
+    global $con;
+    $rarray = array();
+    if(checkIfLoggedIn()){
+		$stmt = $con->prepare("UPDATE delovi SET name=:name, price=:price, manufacturer=:manufacturer, type=:type WHERE id=:id");
+		$stmt->bindParam(":id", $id);
+		$stmt->bindParam(":name", $name);
+		$stmt->bindParam(":price", $price);
+		$stmt->bindParam(":manufacturer", $manufacturer);
+		$stmt->bindParam(":type", $type);
+        if($stmt->execute()){
+            $rarray['success'] = "ok";
+        }else{
+            $rarray['error'] = "Database connection error";
+        }
+    } else{
+        $rarray['error'] = "Please log in";
+        header('HTTP/1.1 401 Unauthorized');
+    }
+    return json_encode($rarray);
 }
+	
 ?>

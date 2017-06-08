@@ -16,8 +16,8 @@
       <ul class="nav navbar-nav">
         <li><a routerLink="/pocetna">Pocetna</a></li>
         <li><a routerLink="/opis">O nama</a></li>
-        <li><a routerLink="/delovi">Delovi</a></li>
-        <li><ng-container *ngIf="isAuth == 'yes'"><a routerLink="/dodajDelove">Dodaj Deo</a></ng-container></li>
+        <li *ngIf="isAuth == 'yes'" routerLink="/dodajDelove" routerLinkActive="active"><a routerLink="/dodajDelove">Dodaj deo</a></li>
+        <li *ngIf="isAuth == 'yes'" routerLink="/delovi" routerLinkActive="active"><a routerLink="/delovi">Delovi</a></li>
         <li><a routerLink="/kontakt">Kontakt</a></li>
         <li><ng-container *ngIf="isAuth == 'no'"><a routerLink="/login"><span class="glyphicon glyphicon-user"></span>LogIn</a></ng-container></li>
         <li><ng-container *ngIf="isAuth == 'yes'"><a (click)="logout()"><span class="glyphicon glyphicon-log-in"></span> Logout</a></ng-container></li>

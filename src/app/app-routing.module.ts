@@ -11,6 +11,8 @@ import { DodajDeloveComponent } from './pages/dodajDelove/dodajDelove.component'
 import {KontaktComponent} from './pages/kontakt/kontakt.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegistracijaComponent } from './pages/registracija/registracija.component';
+import { DeoComponent } from './pages/deo/deo.component';
+import { PromeniDeoComponent } from './pages/promeniDeo/promeniDeo.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/pocetna', pathMatch: 'full'},
@@ -20,7 +22,9 @@ const routes: Routes = [
   { path: 'dodajDelove', component: DodajDeloveComponent},
   { path: 'kontakt', component: KontaktComponent},
   { path: 'login', component: LoginComponent},
-  { path: 'registracija', component: RegistracijaComponent}
+  { path: 'registracija', component: RegistracijaComponent},
+  { path: 'deo/:id', component: DeoComponent},
+  { path: 'promeniDeo/:id', component: PromeniDeoComponent}
 ]
 
 @NgModule ({

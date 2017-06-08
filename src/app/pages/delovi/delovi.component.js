@@ -14,17 +14,37 @@ Object.defineProperty(exports, "__esModule", { value: true });
  */
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
+require("rxjs/Rx");
+var router_1 = require("@angular/router");
 var DeloviComponent = (function () {
-    function DeloviComponent(http) {
-        this.http = http;
-    }
-    DeloviComponent.prototype.ngOnInit = function () {
-        this.getData();
-    };
-    DeloviComponent.prototype.getData = function () {
+    function DeloviComponent(http, router) {
         var _this = this;
-        this.http.get('http://localhost/IT255-DZ10/php/deloviBaza.php')
-            .subscribe(function (res) { return _this.data = res.json(); });
+        this.http = http;
+        this.router = router;
+        this.headers = new http_1.Headers();
+        this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
+        this.headers.append('token', localStorage.getItem('token'));
+        http.get('http://localhost/IT255-DZ10/php/deloviBaza.php', { headers: this.headers })
+            .map(function (res) { return res.json(); }).share()
+            .subscribe(function (data) {
+            _this.data = data;
+        }, function (err) {
+            _this.router.navigate(['./']);
+        });
+    }
+    DeloviComponent.prototype.ukloniDeo = function (event, item) {
+        this.headers = new http_1.Headers();
+        this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
+        this.headers.append('token', localStorage.getItem('token'));
+        this.http.get('http://localhost/IT255-DZ10/php/deleteDeo.php?id=' + item, { headers: this.headers }).subscribe(function (data) {
+            event.srcElement.parentElement.parentElement.remove();
+        });
+    };
+    DeloviComponent.prototype.pogledajDeo = function (item) {
+        this.router.navigate(['/deo', item]);
+    };
+    DeloviComponent.prototype.promeniDeo = function (item) {
+        this.router.navigate(['/promeniDeo', item]);
     };
     return DeloviComponent;
 }());
@@ -34,7 +54,7 @@ DeloviComponent = __decorate([
         templateUrl: './delovi.component.html',
         styleUrls: ['./delovi.component.css']
     }),
-    __metadata("design:paramtypes", [http_1.Http])
+    __metadata("design:paramtypes", [http_1.Http, router_1.Router])
 ], DeloviComponent);
 exports.DeloviComponent = DeloviComponent;
 //# sourceMappingURL=delovi.component.js.map

@@ -14,12 +14,30 @@
       </div>
     </form>
     <div class="col-md-12">
-    <div *ngFor="let deo of data | SearchImenaDelovi:name | SearchProizvodjacDelovi:manufacturer" class="delovi">
-      <p><img src="app/pic/{{deo.name}}.png" width="200px" height="80px"><br>{{deo.name}}</p>
-      <br><p>{{deo.manufacturer}}</p>
-      <h3> Cena: {{deo.price}}</h3>
-      <br>
-    </div>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th style="text-align: center">Ime</th>
+          <th style="text-align: center">Proizvodjac</th>
+          <th style="text-align: center">Cena</th>
+          <th style="text-align: center">Delete</th>
+          <th style="text-align: center">Change</th>
+          <th style="text-align: center">View</th>
+        </tr>
+        </thead>
+        <tbody>
+        <ng-container *ngFor="let deo of data | SearchImenaDelovi:name | SearchProizvodjacDelovi:manufacturer">
+          <tr>
+            <td>{{deo.name}}</td>
+            <td>{{deo.manufacturer}}</td>
+            <td>{{deo.price}}</td>
+            <td><button class="btn btn-danger" (click)="ukloniDeo($event, deo.id)">Delete</button></td>
+            <td><button class="btn btn-danger" (click)="promeniDeo(deo.id)">Change</button></td>
+            <td><button class="btn btn-default" (click)="pogledajDeo(deo.id)">View</button></td>
+          </tr>
+        </ng-container>
+        </tbody>
+      </table>
   </div>
   </div>
 </div>

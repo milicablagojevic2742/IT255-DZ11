@@ -22,6 +22,8 @@ var delovi_proizvodjacsearch_1 = require("./pages/delovi/delovi-proizvodjacsearc
 var dodajDelove_component_1 = require("./pages/dodajDelove/dodajDelove.component");
 var login_component_1 = require("./pages/login/login.component");
 var registracija_component_1 = require("./pages/registracija/registracija.component");
+var deo_component_1 = require("./pages/deo/deo.component");
+var promeniDeo_component_1 = require("./pages/promeniDeo/promeniDeo.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -31,7 +33,7 @@ AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, app_routing_module_1.AppRoutingModule, http_1.HttpModule, forms_1.ReactiveFormsModule],
         declarations: [app_component_1.AppComponent, header_component_1.HeaderComponent, pocetna_component_1.PocetnaComponent, opis_component_1.OpisComponent, delovi_component_1.DeloviComponent, kontakt_component_1.KontaktComponent, delovi_imenasearch_1.DeloviImenaSearch,
-            delovi_proizvodjacsearch_1.DeloviProizvidjacSearch, dodajDelove_component_1.DodajDeloveComponent, login_component_1.LoginComponent, registracija_component_1.RegistracijaComponent],
+            delovi_proizvodjacsearch_1.DeloviProizvidjacSearch, dodajDelove_component_1.DodajDeloveComponent, login_component_1.LoginComponent, registracija_component_1.RegistracijaComponent, deo_component_1.DeoComponent, promeniDeo_component_1.PromeniDeoComponent],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

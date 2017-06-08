@@ -42,13 +42,13 @@ var DodajDeloveComponent = (function () {
             .map(function (res) { return res; })
             .subscribe(function (data) { return _this.postResponse = data; }, function (err) { return alert(JSON.stringify(err)); }, function () {
             if (_this.postResponse['_body'].indexOf('error') === -1) {
-                _this.router.navigate(['']);
+                _this.router.navigate(['/delovi']);
             }
             else {
                 alert('Neuspeh');
             }
         });
-        alert('Uspesan unos T!');
+        alert('Uspesan unos dela!');
     };
     return DodajDeloveComponent;
 }());

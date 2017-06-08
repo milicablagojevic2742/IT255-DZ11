@@ -18,6 +18,8 @@ var dodajDelove_component_1 = require("./pages/dodajDelove/dodajDelove.component
 var kontakt_component_1 = require("./pages/kontakt/kontakt.component");
 var login_component_1 = require("./pages/login/login.component");
 var registracija_component_1 = require("./pages/registracija/registracija.component");
+var deo_component_1 = require("./pages/deo/deo.component");
+var promeniDeo_component_1 = require("./pages/promeniDeo/promeniDeo.component");
 var routes = [
     { path: '', redirectTo: '/pocetna', pathMatch: 'full' },
     { path: 'pocetna', component: pocetna_component_1.PocetnaComponent },
@@ -26,7 +28,9 @@ var routes = [
     { path: 'dodajDelove', component: dodajDelove_component_1.DodajDeloveComponent },
     { path: 'kontakt', component: kontakt_component_1.KontaktComponent },
     { path: 'login', component: login_component_1.LoginComponent },
-    { path: 'registracija', component: registracija_component_1.RegistracijaComponent }
+    { path: 'registracija', component: registracija_component_1.RegistracijaComponent },
+    { path: 'deo/:id', component: deo_component_1.DeoComponent },
+    { path: 'promeniDeo/:id', component: promeniDeo_component_1.PromeniDeoComponent }
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {
